@@ -21,7 +21,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private double FUNCAO(double X, double Y) {
-        return X * X + Y;
+        return Y - X;
     }
 
     /**
@@ -58,9 +58,9 @@ public class Principal extends javax.swing.JFrame {
 
         textX.setText("0");
 
-        textY.setText("0");
+        textY.setText("2");
 
-        textH.setText("0");
+        textH.setText("2");
 
         botaoCalcular.setText("Euler");
         botaoCalcular.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel4.setText("até:");
 
-        textXN.setText("0");
+        textXN.setText("4.0");
 
         botaoCalcularAprimorado.setText("Aprimorado");
         botaoCalcularAprimorado.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +186,7 @@ public class Principal extends javax.swing.JFrame {
         XN = Double.parseDouble(textXN.getText());
 
         while (X <= XN) {
+            int contador = 0;
             K = H * FUNCAO(X, Y);
             Y = Y + K;
             X = X + H;
@@ -194,6 +195,10 @@ public class Principal extends javax.swing.JFrame {
             System.out.println("Y: " + Y);
 
             // ADICIONAR VALORES PARA A TABELA AQUI (X e Y)
+            jTable1.getModel().setValueAt(X, contador, 0);
+            jTable1.getModel().setValueAt(Y, contador, 1);
+
+            contador++;
         }
     }//GEN-LAST:event_botaoCalcularActionPerformed
 
@@ -204,6 +209,7 @@ public class Principal extends javax.swing.JFrame {
         XN = Double.parseDouble(textXN.getText());
         double K1, K2;
         while (X <= XN) {
+            int contador = 0;
             K1 = FUNCAO(X, Y);
             K2 = FUNCAO(X + H, Y * K1);
             Y = Y + H / 2.0 * (K1 + K2);
@@ -213,6 +219,10 @@ public class Principal extends javax.swing.JFrame {
             System.out.println("Y: " + Y);
 
             // ADICIONAR VALORES PARA A TABELA AQUI (X e Y)
+            jTable1.getModel().setValueAt(X, contador, 0);
+            jTable1.getModel().setValueAt(Y, contador, 1);
+
+            contador++;
         }
     }//GEN-LAST:event_botaoCalcularAprimoradoActionPerformed
 
